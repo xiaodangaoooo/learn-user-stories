@@ -52,3 +52,19 @@ try {
 } catch (_) {
   console.log('withdrawal scenario 2 passed');
 }
+
+//check balance scenario 1: check balance success
+const currentBalance = bank.checkBalance('123456');
+if (currentBalance === 500) {
+  console.log('check balance scenario 1 passed');
+} else {
+  console.log('check balance scenario 1 failed');
+}
+
+// check balance scenario 2: Failed balance inquiry due to invalid account number
+try {
+  bank.checkBalance('invalid_acc_num'); 
+  console.log('check balance scenario 2 failed');
+} catch (error) {
+  console.log('check balance scenario 2 passed');
+}
