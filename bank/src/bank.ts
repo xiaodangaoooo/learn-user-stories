@@ -57,6 +57,26 @@ export default class Bank {
   }
 
   /**
+   * Withdraws an amount from the bank account
+   * @param {string} accountNumber -- account number of the bank account
+   * @param {number} amount -- amount to withdraw
+   * @returns void
+   */
+  public withdraw(accountNumber: string, amount: number): void {
+    if (amount <= 0) {
+      throw new Error('Withdrawal amount must be greater than zero');
+    }
+    const account = this.findAccount(accountNumber);
+    if (!account) {
+      throw new Error('Account not found');
+    }
+    if (account.balance < amount) {
+      throw new Error('Insufficient funds');
+    }
+    account.balance -= amount;
+  }
+
+  /**
    * Checks the balance of the bank account
    * @param {string} accountNumber -- account number of the bank account
    * @returns number -- balance of the bank account

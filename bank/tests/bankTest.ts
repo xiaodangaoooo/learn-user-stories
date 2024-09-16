@@ -35,3 +35,20 @@ try {
 } catch (_) {
   console.log('deposit scenario 2 passed');
 }
+
+//withdrawal scenario 1: successful withdrawal
+bank.withdraw('123456', 500);
+const balanceAfterWithdrawal = bank.checkBalance('123456');
+if (balanceAfterWithdrawal === 500) {
+  console.log('withdrawal scenario 1 passed');
+} else {
+  console.log('withdrawal scenario 1 failed');
+}
+
+//withdrawal scenario 2: withdrawal failure due to insufficient funds
+try {
+  bank.withdraw('123456', 600);
+  console.log('withdrawal scenario 2 failed');
+} catch (_) {
+  console.log('withdrawal scenario 2 passed');
+}
